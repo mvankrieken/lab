@@ -1,0 +1,12 @@
+# Password
+grafana:
+  adminPassword: world
+
+  # Traefik (Add grafana.kubernetes.local to /ect/hosts)
+  ingress:
+    enabled: true
+    annotations:
+      traefik.ingress.kubernetes.io/router.entrypoints: web
+    hosts:
+      - grafana.kubernetes.local
+    path: /
