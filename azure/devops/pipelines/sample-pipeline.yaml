@@ -2,14 +2,6 @@ trigger: none
 
 pool: Local-kubernetes
 
-resources:
-  repositories:
-    - repository: templates
-      displayname: templates from devops
-      type: git
-      name: mvankrieken/lab
-      ref: main
-
 stages:
 - stage: Deploy
   jobs:
@@ -19,9 +11,7 @@ stages:
         runOnce:
           deploy:
             steps:
-            #Branch Checkout
-            - checkout: self
-              persistCredentials: true
-            
-            # Hello World program
-            - template: azure/devops/pipelines/sample-hello-world.yaml@templates
+              - script: echo This runs in the default shell on any machine
+              - bash: |
+                  echo This multiline script always runs in Bash.
+                  echo Even on Windows machines!
