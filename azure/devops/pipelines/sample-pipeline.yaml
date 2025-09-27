@@ -1,0 +1,27 @@
+trigger: none
+
+pool: Local-kubernetes
+
+resources:
+  repositories:
+    - repository: templates
+      displayname: templates from devops
+      type: git
+      name: mvk-itsolutions/learning
+      ref: main
+
+stages:
+- stage: Deploy
+  jobs:
+  - deployment: helloWorld
+    displayName: 'Agent Setup'
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+            #Branch Checkout
+            - checkout: self
+              persistCredentials: true
+            
+            # Hello World program
+            - template: azure/devops/pipelines/sample-hello-world.yaml@templates

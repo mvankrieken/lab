@@ -1,0 +1,4 @@
+steps:
+    -   bash: |
+            echo "Hello, Welcome to Hello World!"
+        displayName: 'Hello World'
