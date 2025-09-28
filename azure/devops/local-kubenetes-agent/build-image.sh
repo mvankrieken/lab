@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-docker build --tag "local/az-local-agent:v1.4.0" --file "image/azure-agent.dockerfile" --platform linux/x86_64 image
+docker build --tag "local/az-local-agent:v1.5.5" --file "image/azure-agent.dockerfile" --platform linux/x86_64 image
 
-echo "Image build locally as local/az-local-agent:v1.4.0"
+echo "Image build locally as local/az-local-agent:v1.5.5"

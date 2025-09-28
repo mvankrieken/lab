@@ -17,26 +17,29 @@ spec:
     spec:
       containers:
       - name: az-agent
-        image: local/az-local-agent:v1.4.0
+        image: local/az-local-agent:v1.5.5
         imagePullPolicy: Never
         env:
+          # Needed for mac osx m1 serie
           - name: DOTNET_EnableWriteXorExecute
             value: "0"
-          - name: AZP_URL
+          # Manatory settings
+          - name: VSTS_AGENT_INPUT_POOL
+            value: "Local-kubernetes"
+          # Secret  
+          - name: VSTS_AGENT_INPUT_URL
             valueFrom:
               secretKeyRef:
                 name: azdevops
                 key: AZP_URL
-          - name: AZP_TOKEN
+          - name: VSTS_AGENT_INPUT_TOKEN
             valueFrom:
               secretKeyRef:
                 name: azdevops
                 key: AZP_TOKEN
-          - name: AZP_POOL
-            valueFrom:
-              secretKeyRef:
-                name: azdevops
-                key: AZP_POOL
+          # Customer
+          - name: DEF_CUSTOMER_NAME
+            value: "koen"
         volumeMounts:
         - mountPath: /var/run/docker.sock
           name: docker-volume
