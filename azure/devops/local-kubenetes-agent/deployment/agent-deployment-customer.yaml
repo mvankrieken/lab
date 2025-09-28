@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: az-devops-linux
+  name: az-devops-linux-deploy
   namespace: az-devops
   labels:
-    app: az-devops-linux
+    app: az-devops-linux-deploy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: az-devops-linux
+      app: az-devops-linux-deploy
   template:
     metadata:
       labels:
-        app: az-devops-linux
+        app: az-devops-linux-deploy
     spec:
       containers:
-      - name: az-agent
-        image: local/az-local-agent:v1.5.5
+      - name: az-agent-deploy
+        image: local/az-local-agent:v1.5.11
         imagePullPolicy: Never
         env:
           # Needed for mac osx m1 serie
@@ -37,6 +37,9 @@ spec:
               secretKeyRef:
                 name: azdevops
                 key: AZP_TOKEN
+          # Type
+          - name: DEF_TYPE
+            value: "deploy"
           # Customer
           - name: DEF_CUSTOMER_NAME
             value: "koen"
