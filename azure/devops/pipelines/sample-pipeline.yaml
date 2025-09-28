@@ -1,7 +1,9 @@
 trigger: none
 
-pool: Local-kubernetes
-
+pool: 
+  name: Local-kubernetes
+  demands: 
+    - DEF_CUSTOMER_NAME -equal koen
 stages:
 - stage: Deploy
   jobs:
