@@ -1,9 +1,12 @@
 trigger: none
 
-pool: 
-  name: Local-kubernetes
-  demands: 
-    - DEF_CUSTOMER_NAME -equals koen
+parameters:
+  - name: customer
+    displayName: Customer
+    type: string
+    values:
+      - koen
+
 stages:
 - stage: Deploy
   jobs:
@@ -11,6 +14,10 @@ stages:
     displayName: 'Agent Setup'
     environment: 
       name: 'local-kubernetes-dev'
+    pool: 
+      name: Local-kubernetes
+      demands: 
+        - DEF_CUSTOMER_NAME -equals ${{ parameters.customer }}
     strategy:
         runOnce:
           deploy:
