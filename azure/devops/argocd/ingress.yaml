@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server
+  namespace: argocd
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  ingressClassName: traefik
+  rules:
+    - host: argocd.kubernetes.local
+      http:
+        paths:
+          - backend:
+              service:
+                name: argo-cd-argocd-server
+                port:
+                  number: 80
+            path: /
+            pathType: Prefix      
+

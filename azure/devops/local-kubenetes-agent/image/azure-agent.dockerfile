@@ -21,9 +21,11 @@ WORKDIR /azp/
 COPY ./start.sh ./
 RUN chmod +x ./start.sh
 
-RUN useradd agent
-RUN chown agent ./
-RUN chown -R agent /azp
+RUN useradd agent &&\
+    chown -R agent /azp/ &&\
+    mkdir -p /home/agent/ &&\
+    chown -R agent /home/agent/
+COPY ./pypirc /home/agent/.pypirc
 
 USER agent
 # Another option is to run the agent as root.

@@ -1,0 +1,8 @@
+# Install
+helm install argo-cd  argo-cd/argo-cd --values values.yaml --namespace argocd --create-namespace
+# Upgrade
+helm upgrade argo-cd  argo-cd/argo-cd --values values.yaml --namespace argocd --create-namespace
+# Password
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+# Ingress
+kubectl apply -f ingress.yaml -n argocd

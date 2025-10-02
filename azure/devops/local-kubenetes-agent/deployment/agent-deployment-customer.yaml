@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: az-agent-deploy
-        image: local/az-local-agent:v1.5.11
+        image: local/az-local-agent:v1.5.13
         imagePullPolicy: Never
         env:
           # Needed for mac osx m1 serie

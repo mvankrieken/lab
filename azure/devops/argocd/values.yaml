@@ -1,0 +1,14 @@
+dex:
+  enabled: false
+
+global:
+  domain: argocd.kubernetes.local
+
+params:
+  server.insecure: true
+
+server:
+  extraArgs:
+    - --insecure
+  ingress:
+    enabled: false
