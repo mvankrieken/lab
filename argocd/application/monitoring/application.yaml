@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: prometheus
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: monitoring
+    server: "https://kubernetes.default.svc"
+  project: local
+  source: 
+    path: charts/kube-prometheus-stack
+    repoURL: "https://github.com/prometheus-community/helm-charts.git"
+    targetRevision: kube-prometheus-stack-77.6.0
+    helm:
+     values: |
+      grafana:
+        adminPassword: world
+        ingress:
+          enabled: true
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web
+          hosts:
+            - grafana.kubernetes.local
+          path: /
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
