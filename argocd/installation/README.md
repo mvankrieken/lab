@@ -1,3 +1,7 @@
+# Before
+
+Add argocd.kubernetes.local to /ect/hosts for localhost
+
 # Install
 ```sh
 helm install argo-cd  argo-cd/argo-cd --values values.yaml --namespace argocd --create-namespace

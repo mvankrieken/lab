@@ -1,3 +1,7 @@
+# Before
+
+Add grafana.kubernetes.local to /ect/hosts for localhost
+
 # Install
 ```sh
 helm install prometheus-community prometheus-community/prometheus --values values.yaml --namespace monitoring --create-namespace
