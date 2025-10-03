@@ -11,7 +11,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: argocd/application/root-app-azure-agents
+    path: argocd/application/azure-agents
     repoURL: https://github.com/mvankrieken/lab.git
     targetRevision: main
     directory:
