@@ -9,8 +9,8 @@ spec:
     server: "https://kubernetes.default.svc"
   project: local
   source: 
-    path: deployment
-    repoURL: "https://github.com/mvankrieken/local-kubernetes-azure-agent-build.git"
+    path: azure-build-agent
+    repoURL: "https://github.com/mvankrieken/argocd-config.git"
     targetRevision: main
   syncPolicy:
     automated:
