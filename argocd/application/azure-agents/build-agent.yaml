@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata: 
+  name: build-agent
+  namespace: argocd
+spec: 
+  destination: 
+    namespace: az-devops
+    server: "https://kubernetes.default.svc"
+  project: local
+  source: 
+    repoURL: "https://github.com/mvankrieken/local-kubernetes-azure-agent-build.git"
+    targetRevision: main
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+      - PruneLast=true
