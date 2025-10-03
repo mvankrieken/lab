@@ -24,6 +24,10 @@ spec:
             - grafana.kubernetes.local
           path: /
   syncPolicy:
+    automated:
+      allowEmpty: true
+      selfHeal: true
     syncOptions:
       - CreateNamespace=true
       - ServerSideApply=true
+      - PruneLast=true

@@ -1,26 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  creationTimestamp: null
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
   labels:
-    app.kubernetes.io/name: root-app-directory-approach
-  name: root-app-directory-approach
+    app.kubernetes.io/name: root-app-azure-agents
+  name: root-app-azure-agents
   namespace: argocd
 spec:
   destination:
     namespace: argocd
     server: https://kubernetes.default.svc
-  ignoreDifferences:
-  - group: argoproj.io
-    jsonPointers:
-    - /status
-    kind: Application
   project: default
   source:
-    path: directory-of-apps
-    repoURL: https://github.com/mabusaa/argocd-course-app-of-apps.git
+    path: argocd/application/root-app-azure-agents
+    repoURL: https://github.com/mvankrieken/lab.git
     targetRevision: main
     directory:
       recurse: true
