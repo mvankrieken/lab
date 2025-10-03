@@ -9,7 +9,7 @@ spec:
     server: "https://kubernetes.default.svc"
   project: local
   source: 
-    path: /
+    path: deployment
     repoURL: "https://github.com/mvankrieken/local-kubernetes-azure-agent-build.git"
     targetRevision: main
   syncPolicy:
