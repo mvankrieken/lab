@@ -13,7 +13,8 @@ spec:
     metadata:
       name: '{{customer}}-deploy-agent'
       namespace: argocd
-    destination: 
+    spec:  
+      destination: 
         namespace: az-devops
         server: "https://kubernetes.default.svc"
       project: local
