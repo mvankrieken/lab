@@ -27,5 +27,8 @@ spec:
           valuesObject:
             agentCustomer: '{{customer}}'
       syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
         syncOptions:
           - CreateNamespace=true
