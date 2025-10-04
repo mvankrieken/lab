@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: customer-agent
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - customer: martin
+      - customer: koen
+  template:
+    metadata:
+      name: '{{customer}}-deploy-agent'
+      namespace: argocd
+    destination: 
+        namespace: az-devops
+        server: "https://kubernetes.default.svc"
+      project: local
+      source: 
+        path: azure-customer-agent
+        repoURL: "https://github.com/mvankrieken/argocd-config.git"
+        targetRevision: main
+        helm:
+          releaseName: customer-agent
+          valuesObject:
+            agentCustomer: {{customer}}
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
