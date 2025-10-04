@@ -1,6 +1,0 @@
-[distutils]
-Index-servers =
-  sample-app
-
-[sample-app]
-Repository = https://pkgs.dev.azure.com/mvk-itsolutions/learning/_packaging/sample-app/pypi/upload/
