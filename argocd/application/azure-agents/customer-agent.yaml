@@ -25,7 +25,7 @@ spec:
         helm:
           releaseName: customer-agent
           valuesObject:
-            agentCustomer: {{customer}}
+            agentCustomer: '{{customer}}'
       syncPolicy:
         syncOptions:
           - CreateNamespace=true
