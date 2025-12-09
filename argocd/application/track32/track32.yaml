@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata: 
-  name: track32
+  name: track32-redis
   namespace: argocd
 spec: 
   destination: 
@@ -9,7 +9,7 @@ spec:
     server: "https://kubernetes.default.svc"
   project: local
   source: 
-    path: track32
+    path: track32/redis
     repoURL: "https://github.com/mvankrieken/argocd-config.git"
     targetRevision: main
   syncPolicy:
